@@ -7,3 +7,7 @@ This code is intended to work with sensor SDS011.
 Based on various guides, I find my approach the easiest to implement and with less constraints.
 
 Python dependencies are Python 3.9, and these 3 pip packages - influxdb, pyserial, and tenacity.
+
+One specific to this implementation is the version of InfluxDB which for my setup appears to be 1.8. Newer versions of influxdb enter in a reboot loop which I was unable to fix that.
+
+Docker-compose.yml contains all interdependencies and settings.
