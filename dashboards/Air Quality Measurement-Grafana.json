@@ -20,6 +20,12 @@
   "__elements": {},
   "__requires": [
     {
+      "type": "panel",
+      "id": "bargauge",
+      "name": "Bar gauge",
+      "version": ""
+    },
+    {
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
@@ -33,14 +39,8 @@
     },
     {
       "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "status-history",
-      "name": "Status history",
+      "id": "state-timeline",
+      "name": "State timeline",
       "version": ""
     },
     {
@@ -155,7 +155,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 13,
+        "h": 14,
         "w": 20,
         "x": 0,
         "y": 1
@@ -166,7 +166,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "right",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -201,7 +201,8 @@
           },
           "custom": {
             "fillOpacity": 70,
-            "lineWidth": 1
+            "lineWidth": 0,
+            "spanNulls": false
           },
           "mappings": [],
           "thresholds": {
@@ -228,14 +229,15 @@
       },
       "id": 10,
       "options": {
-        "colWidth": 0.9,
+        "alignValue": "center",
         "legend": {
-          "displayMode": "list",
+          "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
+        "mergeValues": true,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "always",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -247,14 +249,14 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB-API}"
           },
-          "query": "SELECT air_quality_pm10,  air_quality_pm2_5\n FROM weather",
+          "query": "SELECT air_quality_pm10 AS \"PM10\",  air_quality_pm2_5 AS \"PM2.5\"\n FROM weather",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series"
         }
       ],
-      "title": "API Reference Data",
-      "type": "status-history"
+      "title": "API Reference Data - PM 2.5 & PM 10",
+      "type": "state-timeline"
     },
     {
       "datasource": {
@@ -264,6 +266,9 @@
       "description": "",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -278,22 +283,22 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "celsius"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 4,
         "w": 4,
         "x": 20,
         "y": 7
       },
       "id": 11,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -301,7 +306,7 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showUnfilled": true
       },
       "pluginVersion": "9.4.7",
       "targets": [
@@ -310,14 +315,83 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB-API}"
           },
-          "query": "SELECT temperature, wind_speed\n FROM weather",
+          "query": "SELECT temperature AS \"Temp\"\n FROM weather",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series"
         }
       ],
-      "title": "API Reference Data",
-      "type": "stat"
+      "title": "API Reference Data - Temperature",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-API}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "velocitykmh"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 11
+      },
+      "id": 12,
+      "options": {
+        "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^weather\\. Wind$/",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {
+          "titleSize": 1
+        }
+      },
+      "pluginVersion": "9.4.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-API}"
+          },
+          "query": "SELECT wind_speed AS \" Wind\"\n FROM weather",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "API Reference Data - Wind Speed",
+      "type": "bargauge"
     },
     {
       "collapsed": true,
@@ -325,7 +399,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 15
       },
       "id": 6,
       "panels": [],
@@ -398,7 +472,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 16
       },
       "id": 8,
       "options": {
@@ -419,7 +493,7 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
           },
-          "query": "SELECT moving_average(\"PM25\", 60) AS \"PM 2.5\" FROM \"sds011\"",
+          "query": "SELECT moving_average(\"PM25\", 360) AS \"PM 2.5\" FROM \"sds011\"",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series"
@@ -430,17 +504,17 @@
             "uid": "${DS_INFLUXDB}"
           },
           "hide": false,
-          "query": "SELECT moving_average(\"PM10\", 60) AS \"PM 10\" FROM \"sds011\"",
+          "query": "SELECT moving_average(\"PM10\", 360) AS \"PM 10\" FROM \"sds011\"",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series"
         }
       ],
-      "title": "Hourly Moving Average",
+      "title": "Daily Sensor Measurements Moving Average",
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": "10s",
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
@@ -449,8 +523,8 @@
     "list": []
   },
   "time": {
-    "from": "2023-03-26T12:14:47.679Z",
-    "to": "2023-03-26T12:19:10.000Z"
+    "from": "now-1h",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -469,6 +543,6 @@
   "timezone": "",
   "title": "Air Quality Measurement",
   "uid": "L-gH95gRz",
-  "version": 16,
+  "version": 20,
   "weekStart": ""
 }
