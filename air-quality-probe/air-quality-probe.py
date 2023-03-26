@@ -4,7 +4,6 @@ import time
 from influxdb import InfluxDBClient
 from tenacity import retry, stop_after_attempt, wait_fixed
 
-
 @retry(stop=stop_after_attempt(5), wait=wait_fixed(2))
 def write_data_to_influxdb(pm25, pm10):
     

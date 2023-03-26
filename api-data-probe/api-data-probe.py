@@ -1,6 +1,7 @@
 import requests
 import time
 import json
+
 from influxdb import InfluxDBClient
 
 API_KEY = 'ae3fd22b40dd4b6295685733232603'
