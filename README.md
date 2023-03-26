@@ -17,4 +17,4 @@ air-quality-probe.py appends measurements from the SDS011 sensor into InfluxDB i
 Docker-compose.yml contains all interdependencies and settings.
 
 ![Image description](./grafana.png)
-![Image description](./grafana.png)
+![Image description](./chronograf.png)
