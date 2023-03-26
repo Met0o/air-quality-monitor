@@ -6,7 +6,9 @@ This code is intended to work with Raspberry Pi 4 and air quality sensor SDS011.
 
 Based on various blogposts, I find my approach the easiest to implement and with less constraints.
 
-project structure
+<pre>
+```
+project structure:
 │   docker-compose.yml
 │
 └───air-quality-probe
@@ -16,6 +18,8 @@ project structure
 └───api_data
     │   Dockerfile
     │   api_data_fetch.py
+```
+</pre>
 
 # Requirements: 
   - Python 3.9 
