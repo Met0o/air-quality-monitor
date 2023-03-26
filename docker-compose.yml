@@ -24,11 +24,20 @@ services:
       - influxdb
     restart: unless-stopped
 
-  air_quality_probe:
-    image: air_quality_probe
-    container_name: air_quality_probe
+  air-quality-probe:
+    build: ./air-quality-probe
+    image: air-quality-probe
+    container_name: air-quality-probe
     devices:
       - "/dev/ttyUSB0:/dev/ttyUSB0"
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+
+  api-data-probe:
+    build: ./api-data-probe
+    image: api-data-probe
+    container_name: api-data-probe
     depends_on:
       - influxdb
     restart: unless-stopped
@@ -54,7 +63,7 @@ services:
     restart: unless-stopped
 
   kapacitor:
-    image: arm64v8/kapacitor
+    image: arm32v7/kapacitor
     container_name: kapacitor
     environment:
       KAPACITOR_INFLUXDB_0_URLS_0: http://influxdb:8086

@@ -23,9 +23,11 @@ def write_data_to_influxdb(pm25, pm10):
 ser = serial.Serial('/dev/ttyUSB0')
 
 client = InfluxDBClient(host='influxdb', port=8086)
+client.create_database('sds011_data')
 client.switch_database('sds011_data')
 
 while True:
+    
     data = []
     for index in range(0, 10):
         datum = ser.read()
