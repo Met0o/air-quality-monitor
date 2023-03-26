@@ -28,3 +28,6 @@ Setting up Chronograf dashboard requires some basic configuration from its GUI a
 
 # Chronograf dashboard of the system utilization
 ![Image description](./img/chronograf.png)
+
+# Chronograf dashboard with InfluxDB metrics
+![Image description](./img/influxdb.png)
