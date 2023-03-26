@@ -32,6 +32,26 @@ services:
     depends_on:
       - influxdb
     restart: unless-stopped
+  
+  chronograf:
+    image: chronograf:latest
+    container_name: chronograf
+    ports:
+      - "8888:8888"
+    environment:
+      INFLUXDB_URL: http://influxdb:8086
+    depends_on:
+      - influxdb
+    restart: unless-stopped
+
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf
+    depends_on:
+      - influxdb
+    restart: unless-stopped
 
 volumes:
   influxdb-storage:
