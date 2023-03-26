@@ -22,25 +22,31 @@ project structure:
 </pre>
 
 # Requirements: 
+
   - Python 3.9 
     - pip packages: 
       - influxdb 
       - pyserial
       - tenacity
+      - requests
 
-One specific to this implementation is the version of InfluxDB which for my setup is 1.8. Newer versions of influxdb enter in a reboot loop which I was unable to fix.  I've tried with containers from different architectures such as amd64, arm64v8 & arm32v7 and regardless of the the architecture version, only influxdb 1.8 works.
+One specific to this implementation is the version of InfluxDB which for my setup is 1.8. Newer versions of influxdb enter in a reboot loop which I was unable to fix.  I've tried with containers from different architectures such as arm64v8 & arm32v7 and none of them worked.
 
-The deployment containes several microservices including: 
+The deployment spins up several microservices: 
+
   - InfluxDB
   - Grafana
   - Chronograf
   - Telegraf
   - Kapacitor
   - air-quality-probe
+  - api-data-probe
 
-air-quality-probe.py appends measurements from the SDS011 sensor into InfluxDB in 10 secon intervals.
+air-quality-probe.py appends measurements from the SDS011 sensor into InfluxDB in 10 second intervals.
 
-./conf folder contains the configuration plugins for telegraf and kapacitor (required only for the dashboards with system metrics)
+api-data-probe.py sources measurements from http://api.weatherapi.com/ and stores them into the InfluxDB container each 60 minutes. This data is used to compare the differences.
+
+./conf folder contains the configuration plugins for telegraf and kapacitor (required only for the dashboards with system metrics). 
 
 Setting up Chronograf dashboard requires some basic configuration from its GUI accessible at http://localhost:8888
 
