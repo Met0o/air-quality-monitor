@@ -6,7 +6,13 @@ from tenacity import retry, stop_after_attempt, wait_fixed
 
 @retry(stop=stop_after_attempt(5), wait=wait_fixed(2))
 def write_data_to_influxdb(pm25, pm10):
-    
+    """
+    It tries to write the data to the database, and if it fails, it waits 2 seconds and tries again. 
+    It will do this 5 times, and if it still fails, it will give up.
+    :param pm25: PM2.5 concentration in µg/m3
+    :param pm10: PM10 concentration in µg/m³
+    """
+
     data = [
         {
             "measurement": "sds011",
@@ -40,6 +46,6 @@ while True:
     if pmtwofive is not None and pmten is not None:
         write_data_to_influxdb(pmtwofive, pmten)
     
-    time.sleep(10)
+    time.sleep(300)
 
 client.close()
