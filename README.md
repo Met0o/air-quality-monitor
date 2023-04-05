@@ -2,9 +2,7 @@
 
 Simple docker setup for a home-made PM 2.5 & PM 10, Co2, Temperature, and Humidity air quality monitoring system. 
 
-This code is intended to work with Raspberry Pi 4 and air quality sensor SDS011. 
-
-Based on various blogposts, I find my approach the easiest to implement and with less constraints.
+This code is intended to work with Raspberry Pi 4 64bit OS, air quality sensor SDS011, and the M5Stack CO2L Unit with Temperature and Humidity Sensor (SCD41).
 
 <pre>
 ```
@@ -38,9 +36,10 @@ project structure:
       - sensirion-i2c-scd
 
 To install Docker on Raspberry Pi OS:
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.1.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo apt update
-sudo apt install code
+
+    - sudo curl -L "https://github.com/docker/compose/releases/download/v2.1.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    - sudo apt update
+    - sudo apt install code
 
 One specific to this implementation is the version of InfluxDB which for my setup is 1.8. Newer versions of influxdb enter in a reboot loop which I was unable to fix.  I've tried with containers from different architectures such as arm64v8 & arm32v7 and none of them worked.
 
