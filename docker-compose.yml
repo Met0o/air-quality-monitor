@@ -23,6 +23,15 @@ services:
     depends_on:
       - influxdb
     restart: unless-stopped
+    
+  air-co2-temp-hum-probe:
+    build: ./air-co2-temp-hum-probe
+    image: air-co2-temp-hum-probe
+    container_name: air-co2-temp-hum-probe
+    depends_on:
+      - influxdb
+    privileged: true
+    restart: unless-stopped
 
   air-quality-probe:
     build: ./air-quality-probe

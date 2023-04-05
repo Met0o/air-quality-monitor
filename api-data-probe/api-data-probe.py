@@ -11,7 +11,6 @@ client = InfluxDBClient(host='influxdb', port=8086)
 client.create_database('api_data')
 client.switch_database('api_data')
 
-# A loop that will run forever.
 while True:
     try:
         response = requests.get(API_URL, params={'key': API_KEY, 'q': 'Sofia', 'aqi': 'yes'})

@@ -1,0 +1,5 @@
+sudo apt-get install i2c-tools wget
+
+pip install smbus2
+pip install sensirion-i2c-sen5x
+pip install sensirion-i2c-scd
