@@ -1,6 +1,6 @@
 # Raspberry Pi 4 and SDS011 air-quality-monitor
 
-Simple docker setup for a home-made PM 2.5 & PM 10 air quality monitoring system. 
+Simple docker setup for a home-made PM 2.5 & PM 10, Co2, Temperature, and Humidity air quality monitoring system. 
 
 This code is intended to work with Raspberry Pi 4 and air quality sensor SDS011. 
 
