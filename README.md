@@ -11,6 +11,10 @@ Based on various blogposts, I find my approach the easiest to implement and with
 project structure:
 │   docker-compose.yml
 │
+└───air-c02-temp-hum-probe
+│   │   Dockerfile
+│   │   air-c02-temp-hum-probe.py
+|
 └───air-quality-probe
 │   │   Dockerfile
 │   │   air-quality-probe.py
@@ -21,7 +25,7 @@ project structure:
 ```
 </pre>
 
-# Requirements: 
+# Requirements (deployed as part of the Docker containers): 
 
   - Python 3.9 
     - pip packages: 
@@ -29,6 +33,9 @@ project structure:
       - pyserial
       - tenacity
       - requests
+      - smbus2
+      - sensirion-i2c-sen5x
+      - sensirion-i2c-scd
 
 To install Docker on Raspberry Pi OS:
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.1.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -44,8 +51,11 @@ The deployment spins up several microservices:
   - Chronograf
   - Telegraf
   - Kapacitor
+  - air-co2-temp-hum-probe
   - air-quality-probe
   - api-data-probe
+
+air-co2-temp-hum-probe.py uses the M5Stack (https://shop.m5stack.com/products/co2l-unit-with-temperature-and-humidity-sensor-scd41) sensor to append readings into InfluxDB in 5 second intervals. 
 
 air-quality-probe.py appends measurements from the SDS011 sensor into InfluxDB in 10 second intervals.
 
