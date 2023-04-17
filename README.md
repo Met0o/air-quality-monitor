@@ -4,6 +4,8 @@ Simple docker setup for a home-made PM 2.5 & PM 10, Co2, Temperature, and Humidi
 
 This code is intended to work with Raspberry Pi 4 64bit OS, air quality sensor SDS011, and the M5Stack CO2L Unit with Temperature and Humidity Sensor (SCD41).
 
+I have plans to include one more sensor for the purpose of measuring VOC (volatile organic compounds) which will be the final update of the monitoring system.
+
 <pre>
 ```
 project structure:
