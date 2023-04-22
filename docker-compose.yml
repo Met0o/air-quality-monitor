@@ -23,7 +23,16 @@ services:
     depends_on:
       - influxdb
     restart: unless-stopped
-    
+
+  air-voc-probe:
+    build: ./air-voc-probe
+    image: air-voc-probe
+    container_name: air-voc-probe
+    depends_on:
+      - influxdb
+    privileged: true
+    restart: unless-stopped
+
   air-co2-temp-hum-probe:
     build: ./air-co2-temp-hum-probe
     image: air-co2-temp-hum-probe
