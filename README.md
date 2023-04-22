@@ -10,7 +10,11 @@ I have plans to include one more sensor for the purpose of measuring VOC (volati
 ```
 project structure:
 │   docker-compose.yml
-│
+|
+└───air-voc-probe
+|   |   Dockerfile
+│   |   air-voc-probe.py
+|
 └───air-c02-temp-hum-probe
 │   │   Dockerfile
 │   │   air-c02-temp-hum-probe.py
@@ -34,6 +38,7 @@ project structure:
       - tenacity
       - requests
       - smbus2
+      - bme680
       - sensirion-i2c-sen5x
       - sensirion-i2c-scd
 
@@ -52,9 +57,12 @@ The deployment spins up several microservices:
   - Chronograf
   - Telegraf
   - Kapacitor
+  - air-voc-probe
   - air-co2-temp-hum-probe
   - air-quality-probe
   - api-data-probe
+
+air-voc-probe.py uses the BME680 Breakout - Air Quality, Temperature, Pressure, Humidity Sensor (https://shop.pimoroni.com/products/bme680-breakout) to append readings into influxDB in 5 second intervals.
 
 air-co2-temp-hum-probe.py uses the M5Stack (https://shop.m5stack.com/products/co2l-unit-with-temperature-and-humidity-sensor-scd41) sensor to append readings into InfluxDB in 5 second intervals. 
 
