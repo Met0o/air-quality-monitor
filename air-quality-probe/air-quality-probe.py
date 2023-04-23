@@ -46,6 +46,6 @@ while True:
     if pmtwofive is not None and pmten is not None:
         write_data_to_influxdb(pmtwofive, pmten)
     
-    time.sleep(300)
+    time.sleep(5)
 
 client.close()
