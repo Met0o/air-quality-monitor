@@ -73,11 +73,7 @@ api-data-probe.py sources measurements from http://api.weatherapi.com/ and store
 Setting up Chronograf dashboard requires some basic configuration from its GUI accessible at http://localhost:8888
 
 # Latest Grafana dashboard
-<<<<<<< HEAD
 ![Image description](./img/23.04.2023.png)
-=======
-![Image description](./img/Grafana.png)
->>>>>>> e31426cb01694df96eeca95b01d0cf2fbeb5bc87
 
 # Grafana dashboard with realtime reporting
 ![Image description](./img/grafana.png)
