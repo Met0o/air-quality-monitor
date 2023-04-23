@@ -1,10 +1,8 @@
 # Raspberry Pi 4 Air Quality Monitor System
 
-Simple docker setup for a home-made PM 2.5 & PM 10, Co2, Temperature, and Humidity air quality monitoring system. 
+Simple docker setup for a home-made PM 2.5 & PM 10, VOC, Co2, Temperature, and Humidity air quality monitoring system. 
 
-This code is intended to work with Raspberry Pi 4 64bit OS, air quality sensor SDS011, and the M5Stack CO2L Unit with Temperature and Humidity Sensor (SCD41).
-
-I have plans to include one more sensor for the purpose of measuring VOC (volatile organic compounds) which will be the final update of the monitoring system.
+This code is intended to work with Raspberry Pi 4 64bit OS, and the sensors SDS011, BME680 and M5Stack CO2L Unit (SCD41).
 
 <pre>
 ```
@@ -66,9 +64,9 @@ air-voc-probe.py uses the BME680 Breakout - Air Quality, Temperature, Pressure, 
 
 air-co2-temp-hum-probe.py uses the M5Stack (https://shop.m5stack.com/products/co2l-unit-with-temperature-and-humidity-sensor-scd41) sensor to append readings into InfluxDB in 5 second intervals. 
 
-air-quality-probe.py appends measurements from the SDS011 sensor into InfluxDB in 10 second intervals.
+air-quality-probe.py appends measurements from the SDS011 sensor into InfluxDB in 5 second intervals.
 
-api-data-probe.py sources measurements from http://api.weatherapi.com/ and stores them into the InfluxDB container each 60 minutes. This data is used to compare the differences.
+api-data-probe.py sources measurements from http://api.weatherapi.com/ and stores them into the InfluxDB container each 5 minutes. This data is used to compare the indoor with outdoor readings.
 
 ./conf folder contains the configuration plugins for telegraf and kapacitor (required only for the dashboards with system metrics). 
 
