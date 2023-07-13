@@ -55,19 +55,20 @@ To install Docker on Raspberry Pi OS:
 
 One specific to this implementation is the version of InfluxDB which for my setup is 1.8. Newer versions of influxdb enter in a reboot loop which I was unable to fix.  I've tried with containers from different architectures such as arm64v8 & arm32v7 and none of them worked.
 
-The deployment spins up several microservices: 
+The deployment spins up the following microservices: 
 
   - InfluxDB
   - Grafana
   - Chronograf
   - Telegraf
   - Kapacitor
-  - air-voc-probe
+  - air-co-voc-no2-c2h5oh-probe
   - air-co2-temp-hum-probe
   - air-quality-probe
   - api-data-probe
+  - air-voc-probe
 
-air-co-voc-no2-c2h5oh-call.py uses the Grove Gas Sensor V2(Multichannel) by Seed Studio (https://wiki.seeedstudio.com/Grove-Multichannel-Gas-Sensor-V2/) and can detect carbon monoxide (CO), Nitrogen dioxide (NO2), Ethyl alcohol(C2H5CH), and Volatile Organic Compounds (VOC).
+air-co-voc-no2-c2h5oh-call.py uses the Grove Gas Sensor V2(Multichannel) by Seed Studio (https://wiki.seeedstudio.com/Grove-Multichannel-Gas-Sensor-V2/) and can detect carbon monoxide (CO), Nitrogen dioxide (NO2), Ethyl alcohol(C2H5CH), and Volatile Organic Compounds (VOC). This is the most difficult and problematic sensor to configure for meaningful results. The code I use is adapted from the code of Chuntao Liu (https://github.com/atsclct/atsc_sensors).
 
 air-voc-probe.py uses the BME680 Breakout - Air Quality, Temperature, Pressure, Humidity Sensor (https://shop.pimoroni.com/products/bme680-breakout) to append readings into influxDB in 5 second intervals.
 
@@ -85,15 +86,14 @@ Setting Grafana with the correct data sources requires the addition of five sepa
   - sds011_data
   - groove_mgs_v2_data
 
+dashboards folder contains the latest export of the JSON model of the Grafana dashboard.
+
 ./conf folder contains the configuration plugins for telegraf and kapacitor (required only for the dashboards with system metrics). 
 
 Setting up Chronograf dashboard requires some basic configuration from its GUI accessible at http://localhost:8888
 
 # Latest Grafana dashboard
-![Image description](./img/24.04.2023.png)
-
-# Grafana dashboard with realtime reporting
-![Image description](./img/grafana.png)
+![Image description](./img/Grafana2023-07-13.png)
 
 # Chronograf dashboard of the system utilization
 ![Image description](./img/chronograf.png)
