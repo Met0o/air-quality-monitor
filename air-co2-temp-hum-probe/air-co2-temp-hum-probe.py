@@ -6,6 +6,16 @@ from sensirion_i2c_scd import Scd4xI2cDevice
 from influxdb import InfluxDBClient
 
 def write_data_to_influxdb(co2, temperature, humidity):
+    """
+    The function `write_data_to_influxdb` writes CO2, temperature, and humidity data to an InfluxDB
+    database.
+    
+        :param co2: Carbon Dioxide (CO2) concentration in parts per million (ppm)
+        :param temperature: The `write_data_to_influxdb` function you provided is used to write CO2,
+        temperature, and humidity data to an InfluxDB database
+        :param humidity: Humidity is the amount of water vapor present in the air. It is typically expressed
+        as a percentage and represents the relative humidity in the environment
+    """
     data = [
         {
             "measurement": "scd4x",
