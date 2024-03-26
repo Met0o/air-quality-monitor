@@ -9,7 +9,7 @@ client = InfluxDBClient(host='influxdb', port=8086)
 client.create_database('bme680_data')
 client.switch_database('bme680_data')
 
-def write_data_to_influxdb(air_quality_score, gas, hum, pressure):
+def write_data_to_influxdb(air_quality_score, gas, hum, pressure, temp):
     if air_quality_score is None:
         print("Air quality score is None, skipping data point.")
         return
@@ -21,7 +21,8 @@ def write_data_to_influxdb(air_quality_score, gas, hum, pressure):
                 "air_quality_score": float(air_quality_score),
                 "gas_resistance": float(gas),
                 "humidity": float(hum),
-                "pressure": float(pressure)
+                "pressure": float(pressure),
+                "temp": float(temp)
             }
         }
     ]
@@ -70,7 +71,7 @@ while True:
 			R_gas = 0
 			AQ = None
 			
-		prompt_data(temp, press, hum, R_gas, AQ)
+		prompt_data(press, hum, R_gas, AQ)
   
 		write_data_to_influxdb(AQ, R_gas, hum, press)
   
