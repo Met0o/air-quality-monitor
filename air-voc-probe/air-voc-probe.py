@@ -71,8 +71,8 @@ while True:
 			R_gas = 0
 			AQ = None
 			
-		prompt_data(press, hum, R_gas, AQ)
-  
-		write_data_to_influxdb(AQ, R_gas, hum, press)
+		prompt_data(temp, press, hum, R_gas, AQ)
+
+		write_data_to_influxdb(AQ, R_gas, hum, press, temp)
   
 	sleep(1)
