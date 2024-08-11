@@ -11,7 +11,7 @@ def write_data_to_influxdb(co2, temperature, humidity):
     database.
     
         :param co2: Carbon Dioxide (CO2) concentration in parts per million (ppm)
-        :param temperature: The `write_data_to_influxdb` function you provided is used to write CO2,
+        :param temperature: The `write_data_to_influxdb` function is used to write CO2,
         temperature, and humidity data to an InfluxDB database
         :param humidity: Humidity is the amount of water vapor present in the air. It is typically expressed
         as a percentage and represents the relative humidity in the environment

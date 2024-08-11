@@ -6,10 +6,17 @@ services:
       - "8086:8086"
     volumes:
       - influxdb-storage:/var/lib/influxdb
-    environment:
-      - INFLUXDB_HTTP_LOG_ENABLED=true
-      - INFLUXDB_LOGGING_LEVEL=debug
+    # environment:
+    #   - INFLUXDB_HTTP_LOG_ENABLED=true
+    #   - INFLUXDB_LOGGING_LEVEL=debug
     restart: unless-stopped
+    entrypoint: >
+      influxd run -config /etc/influxdb/influxdb.conf &&
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"groove_mgs_v2_data\" DURATION 5d REPLICATION 1 DEFAULT" &&
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"scd4x_data\" DURATION 5d REPLICATION 1 DEFAULT" &&
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"sds011_data\" DURATION 5d REPLICATION 1 DEFAULT" &&
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"bme680_data\" DURATION 5d REPLICATION 1 DEFAULT" &&
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"api_data\" DURATION 5d REPLICATION 1 DEFAULT"
 
   grafana:
     image: grafana/grafana:latest
@@ -67,25 +74,25 @@ services:
       - influxdb
     restart: unless-stopped
   
-  chronograf:
-    image: chronograf:latest
-    container_name: chronograf
-    ports:
-      - "8888:8888"
-    environment:
-      INFLUXDB_URL: http://influxdb:8086
-    depends_on:
-      - influxdb
-    restart: unless-stopped
+  # chronograf:
+  #   image: chronograf:latest
+  #   container_name: chronograf
+  #   ports:
+  #     - "8888:8888"
+  #   environment:
+  #     INFLUXDB_URL: http://influxdb:8086
+  #   depends_on:
+  #     - influxdb
+  #   restart: unless-stopped
 
-  telegraf:
-    image: telegraf:latest
-    container_name: telegraf
-    volumes:
-      - ./conf/telegraf.conf:/etc/telegraf/telegraf.conf
-    depends_on:
-      - influxdb
-    restart: unless-stopped
+  # telegraf:
+  #   image: telegraf:latest
+  #   container_name: telegraf
+  #   volumes:
+  #     - ./conf/telegraf.conf:/etc/telegraf/telegraf.conf
+  #   depends_on:
+  #     - influxdb
+  #   restart: unless-stopped
 
   kapacitor:
     image: arm32v7/kapacitor
