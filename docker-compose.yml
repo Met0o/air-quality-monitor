@@ -12,11 +12,11 @@ services:
     restart: unless-stopped
     entrypoint: >
       influxd run -config /etc/influxdb/influxdb.conf &&
-      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"groove_mgs_v2_data\" DURATION 5d REPLICATION 1 DEFAULT" &&
-      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"scd4x_data\" DURATION 5d REPLICATION 1 DEFAULT" &&
-      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"sds011_data\" DURATION 5d REPLICATION 1 DEFAULT" &&
-      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"bme680_data\" DURATION 5d REPLICATION 1 DEFAULT" &&
-      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"api_data\" DURATION 5d REPLICATION 1 DEFAULT"
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"groove_mgs_v2_data\" DURATION 2d REPLICATION 1 DEFAULT" &&
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"scd4x_data\" DURATION 2d REPLICATION 1 DEFAULT" &&
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"sds011_data\" DURATION 2d REPLICATION 1 DEFAULT" &&
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"bme680_data\" DURATION 2d REPLICATION 1 DEFAULT" &&
+      influx -execute "CREATE RETENTION POLICY \"two_days\" ON \"api_data\" DURATION 2d REPLICATION 1 DEFAULT"
 
   grafana:
     image: grafana/grafana:latest
