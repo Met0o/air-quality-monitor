@@ -41,7 +41,7 @@ def loop():
     
     write_data_to_influxdb(g_no2, g_c2h5oh, g_voc, g_co)
     
-    time.sleep(1)
+    time.sleep(10)
 
 if __name__ == "__main__":
     while True:

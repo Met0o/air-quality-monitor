@@ -3,7 +3,7 @@ import bme680
 # source - https://github.com/thstielow/raspi-bme680-iaq/blob/main/bme680IAQ.py
 
 class IAQTracker:
-	def __init__(self, burn_in_cycles = 300, gas_recal_period = 3600, ph_slope = 0.03):
+	def __init__(self, burn_in_cycles = 100, gas_recal_period = 3600, ph_slope = 0.03):
 		self.slope = ph_slope
 		self.burn_in_cycles = burn_in_cycles
 		self.gas_cal_data = []

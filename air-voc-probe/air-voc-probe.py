@@ -75,4 +75,4 @@ while True:
 
 		write_data_to_influxdb(AQ, R_gas, hum, press, temp)
   
-	sleep(1)
+	sleep(10)

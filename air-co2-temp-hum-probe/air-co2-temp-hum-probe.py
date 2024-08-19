@@ -48,7 +48,7 @@ with LinuxI2cTransceiver('/dev/i2c-1') as i2c_transceiver:
     client.switch_database('scd4x_data')
 
     while True:
-        time.sleep(5)
+        time.sleep(10)
         co2, temperature, humidity = scd4x.read_measurement()
         co2_ppm = extract_numerical_value(co2)
         temperature_c = extract_numerical_value(temperature)
