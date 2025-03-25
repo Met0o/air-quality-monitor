@@ -1,0 +1,335 @@
+=== Collecting last 50 lines of logs for each container ===
+
+
+=== influxdb logs ===
+
+ts=2025-03-24T10:58:27.667845Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/202 duration=28.264ms
+ts=2025-03-24T10:58:27.679419Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/250/000000001-000000001.tsm id=0 duration=0.420ms
+ts=2025-03-24T10:58:27.684334Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/214 duration=33.992ms
+ts=2025-03-24T10:58:27.685865Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/262/000000001-000000001.tsm id=0 duration=0.272ms
+ts=2025-03-24T10:58:27.689945Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/226 duration=42.328ms
+ts=2025-03-24T10:58:27.691803Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/274/000000001-000000001.tsm id=0 duration=0.363ms
+ts=2025-03-24T10:58:27.693552Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/238 duration=42.114ms
+ts=2025-03-24T10:58:27.694769Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/286/000000001-000000001.tsm id=0 duration=0.244ms
+ts=2025-03-24T10:58:27.706414Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/250 duration=38.088ms
+ts=2025-03-24T10:58:27.709026Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/262 duration=24.557ms
+ts=2025-03-24T10:58:27.710244Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/308/000000001-000000001.tsm id=0 duration=0.183ms
+ts=2025-03-24T10:58:27.710264Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/298/000000001-000000001.tsm id=0 duration=0.475ms
+ts=2025-03-24T10:58:27.712203Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/274 duration=21.918ms
+ts=2025-03-24T10:58:27.714512Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/316/000000001-000000001.tsm id=0 duration=0.394ms
+ts=2025-03-24T10:58:27.766401Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/286 duration=72.723ms
+ts=2025-03-24T10:58:27.767874Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/328/000000001-000000001.tsm id=0 duration=0.217ms
+ts=2025-03-24T10:58:27.781689Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/308 duration=72.505ms
+ts=2025-03-24T10:58:27.783166Z lvl=info msg="Reading file" log_id=0vTxhaCG000 engine=tsm1 service=cacheloader path=/var/lib/influxdb/wal/sds011_data/autogen/340/_00001.wal size=3074085
+ts=2025-03-24T10:58:27.785111Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/316 duration=72.584ms
+ts=2025-03-24T10:58:27.785739Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/298 duration=78.738ms
+ts=2025-03-24T10:58:27.787675Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/328 duration=21.009ms
+ts=2025-03-24T10:58:27.788470Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/50/000000001-000000001.tsm id=0 duration=0.284ms
+ts=2025-03-24T10:58:27.790337Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/38/000000001-000000001.tsm id=0 duration=0.367ms
+ts=2025-03-24T10:58:27.795188Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/62/000000001-000000001.tsm id=0 duration=0.461ms
+ts=2025-03-24T10:58:27.806707Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/50 duration=20.853ms
+ts=2025-03-24T10:58:27.808292Z lvl=info msg="Opened file" log_id=0vTxhaCG000 engine=tsm1 service=filestore path=/var/lib/influxdb/data/sds011_data/autogen/74/000000001-000000001.tsm id=0 duration=0.251ms
+ts=2025-03-24T10:58:27.812175Z lvl=info msg="Opened shard" log_id=0vTxhaCG000 service=store trace_id=0vTxhabG000 op_name=tsdb_open index_version=inmem path=/var/lib/influxdb/data/sds011_data/autogen/62 duration=23.968ms
+panic: runtime error: slice bounds out of range [:-2019880614]
+
+goroutine 189 [running]:
+github.com/influxdata/influxdb/tsdb/engine/tsm1.getBuf(0x879b115a, 0x678d460)
+	/go/src/github.com/influxdata/influxdb/tsdb/engine/tsm1/pools.go:20 +0x138
+github.com/influxdata/influxdb/tsdb/engine/tsm1.(*WALSegmentReader).Next(0x499c0f0, 0x6539800)
+	/go/src/github.com/influxdata/influxdb/tsdb/engine/tsm1/wal.go:1151 +0x12c
+github.com/influxdata/influxdb/tsdb/engine/tsm1.(*CacheLoader).Load.func1(0x4291594, 0x6106280, 0x429158c, 0x5068100, 0x0, 0x0)
+	/go/src/github.com/influxdata/influxdb/tsdb/engine/tsm1/cache.go:734 +0x34c
+github.com/influxdata/influxdb/tsdb/engine/tsm1.(*CacheLoader).Load(0x6106280, 0x5068100, 0x1, 0x1)
+	/go/src/github.com/influxdata/influxdb/tsdb/engine/tsm1/cache.go:758 +0x88
+github.com/influxdata/influxdb/tsdb/engine/tsm1.(*Engine).reloadCache(0x4fd0600, 0x0, 0x0)
+	/go/src/github.com/influxdata/influxdb/tsdb/engine/tsm1/engine.go:2378 +0x1d4
+github.com/influxdata/influxdb/tsdb/engine/tsm1.(*Engine).Open(0x4fd0600, 0x3a8ec00, 0x1ec13b0)
+	/go/src/github.com/influxdata/influxdb/tsdb/engine/tsm1/engine.go:751 +0x278
+github.com/influxdata/influxdb/tsdb.(*Shard).Open.func1(0x5720580, 0x0, 0x0)
+	/go/src/github.com/influxdata/influxdb/tsdb/shard.go:343 +0x298
+github.com/influxdata/influxdb/tsdb.(*Shard).Open(0x5720580, 0x3a8ec90, 0x60ce090)
+	/go/src/github.com/influxdata/influxdb/tsdb/shard.go:354 +0x1c
+github.com/influxdata/influxdb/tsdb.(*Store).loadShards.func1(0x387b880, 0x38cc640, 0x3afdcb0, 0x387b8c0, 0xfc09e8, 0x3e48900, 0x3a5f0c0, 0x3af8227, 0xb, 0x3891163, ...)
+	/go/src/github.com/influxdata/influxdb/tsdb/store.go:405 +0x4c4
+created by github.com/influxdata/influxdb/tsdb.(*Store).loadShards
+	/go/src/github.com/influxdata/influxdb/tsdb/store.go:363 +0xb64
+
+
+=== air-quality-probe logs ===
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 495, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 398, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 236, in connect
+    self.sock = self._new_conn()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPConnection object at 0x7f945356d0>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22sds011_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f945356d0>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/air-quality-probe.py", line 31, in <module>
+    client.create_database('sds011_data')
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 757, in create_database
+    self.query("CREATE DATABASE {0}".format(quote_ident(dbname)),
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 532, in query
+    response = self.request(
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 343, in request
+    response = self._session.request(
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22sds011_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f945356d0>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+
+=== air-voc-probe logs ===
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 495, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 398, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 236, in connect
+    self.sock = self._new_conn()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPConnection object at 0x7fa2679be0>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22bme680_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fa2679be0>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/air-voc-probe.py", line 9, in <module>
+    client.create_database('bme680_data')
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 757, in create_database
+    self.query("CREATE DATABASE {0}".format(quote_ident(dbname)),
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 532, in query
+    response = self.request(
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 343, in request
+    response = self._session.request(
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22bme680_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fa2679be0>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+
+=== api-data-probe logs ===
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 495, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 398, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 236, in connect
+    self.sock = self._new_conn()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPConnection object at 0x7f9a6303d0>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22api_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f9a6303d0>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/api-data-probe.py", line 11, in <module>
+    client.create_database('api_data')
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 757, in create_database
+    self.query("CREATE DATABASE {0}".format(quote_ident(dbname)),
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 532, in query
+    response = self.request(
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 343, in request
+    response = self._session.request(
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22api_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7f9a6303d0>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+
+=== air-co2-temp-hum-probe logs ===
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 495, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 398, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 236, in connect
+    self.sock = self._new_conn()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPConnection object at 0x7fa1c24670>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22scd4x_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fa1c24670>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/air-co2-temp-hum-probe.py", line 47, in <module>
+    client.create_database('scd4x_data')
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 757, in create_database
+    self.query("CREATE DATABASE {0}".format(quote_ident(dbname)),
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 532, in query
+    response = self.request(
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 343, in request
+    response = self._session.request(
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22scd4x_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fa1c24670>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+
+=== air-co-voc-no2-c2h5oh-probe logs ===
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 495, in _make_request
+    conn.request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 398, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.9/http/client.py", line 1280, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1040, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 980, in send
+    self.connect()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 236, in connect
+    self.sock = self._new_conn()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPConnection object at 0x7fb6f86730>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22groove_mgs_v2_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fb6f86730>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/air-co-voc-no2-c2h5oh-call.py", line 19, in <module>
+    client.create_database('groove_mgs_v2_data')
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 757, in create_database
+    self.query("CREATE DATABASE {0}".format(quote_ident(dbname)),
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 532, in query
+    response = self.request(
+  File "/usr/local/lib/python3.9/site-packages/influxdb/client.py", line 343, in request
+    response = self._session.request(
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='influxdb', port=8086): Max retries exceeded with url: /query?q=CREATE+DATABASE+%22groove_mgs_v2_data%22 (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fb6f86730>: Failed to resolve 'influxdb' ([Errno -2] Name or service not known)"))
+
+=== Container resource usage ===
+
+CONTAINER ID   NAME                          CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK I/O   PIDS
+56526600fab3   influxdb                      0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
+93a9e8571b0d   air-quality-probe             0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
+176f871eae1c   air-voc-probe                 0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
+d8925e908a4c   api-data-probe                0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
+942bcd111ae8   air-co2-temp-hum-probe        0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
+68077956089e   air-co-voc-no2-c2h5oh-probe   0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
