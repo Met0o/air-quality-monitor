@@ -1,7 +1,7 @@
-FROM python:3.9
+FROM python:3.12-slim
 
-RUN pip install influxdb pyserial tenacity
-
+RUN pip install --no-cache-dir pyserial requests tenacity
 COPY air-quality-probe.py /app/air-quality-probe.py
+WORKDIR /app
 
-CMD ["python", "/app/air-quality-probe.py"]
+CMD ["python", "air-quality-probe.py"]

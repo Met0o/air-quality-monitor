@@ -1,8 +1,8 @@
-FROM python:3.9
+FROM python:3.12-slim
 
-RUN pip install --upgrade pip influxdb smbus
-
-COPY air_co_voc_no2_c2h5oh_probe.py /app/air_co_voc_no2_c2h5oh_probe.py
-COPY air-co-voc-no2-c2h5oh-call.py /app/air-co-voc-no2-c2h5oh-call.py
-
-CMD ["python", "/app/air-co-voc-no2-c2h5oh-call.py"]
+RUN apt-get update && apt-get install -y --no-install-recommends i2c-tools \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir smbus2 requests
+COPY air_co_voc_no2_c2h5oh_probe.py air-co-voc-no2-c2h5oh-call.py /app/
+WORKDIR /app
+CMD ["python", "air-co-voc-no2-c2h5oh-call.py"]

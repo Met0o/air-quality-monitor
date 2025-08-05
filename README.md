@@ -4,6 +4,8 @@ Simple docker setup for a home-made PM 2.5 & PM 10, VOC, Co2, CO, NO2, C2H5CH, T
 
 This code is intended to work with Raspberry Pi 4 64bit OS, and the sensors SDS011, BME680, M5Stack CO2L Unit (SCD41) and Grove - Gas Sensor V2(Multichannel).
 
+sudo docker compose up -d --build
+
 <pre>
 ```
 project structure:

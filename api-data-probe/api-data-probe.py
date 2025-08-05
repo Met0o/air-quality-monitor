@@ -2,14 +2,8 @@ import requests
 import time
 import json
 
-from influxdb import InfluxDBClient
-
 API_KEY = 'ae3fd22b40dd4b6295685733232603'
 API_URL = 'http://api.weatherapi.com/v1/current.json'
-
-client = InfluxDBClient(host='influxdb', port=8086)
-client.create_database('api_data')
-client.switch_database('api_data')
 
 while True:
     try:
@@ -48,8 +42,7 @@ while True:
             }
         ]
         
-        client.write_points(json_body)
-        print('Data written to InfluxDB:', json_body)
+        print('Data sent to the API:', json_body)
     except Exception as e:
         print('Error:', e)
     

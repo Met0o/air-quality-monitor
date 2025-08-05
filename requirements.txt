@@ -1,0 +1,6 @@
+bme680
+fastapi
+requests
+smbus2
+uvicorn
+tenacity

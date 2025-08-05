@@ -1,8 +1,8 @@
-FROM python:3.9
+FROM python:3.12-slim
 
-RUN pip install --upgrade pip numpy influxdb pyserial bme680
-
-COPY air-voc-probe.py /app/air-voc-probe.py
-COPY iaq.py /app/iaq.py
-
-CMD ["python", "/app/air-voc-probe.py"]
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3-pip i2c-tools && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir bme680 requests numpy
+COPY air-voc-probe.py iaq.py /app/
+WORKDIR /app
+CMD ["python", "air-voc-probe.py"]

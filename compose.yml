@@ -1,0 +1,59 @@
+services:
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
+    restart: unless-stopped
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    tmpfs:
+      - /app/data
+    restart: unless-stopped
+  sds011:
+    build: ./air-quality-probe
+    depends_on:
+      - api
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    environment:
+      - API_BASE=http://api:8000
+    restart: unless-stopped
+  bme680:
+    build: ./air-voc-probe
+    depends_on: [api]
+    privileged: true
+    devices:
+      - /dev/i2c-1:/dev/i2c-1
+    environment:
+      - API_BASE=http://api:8000
+    restart: unless-stopped
+  mgs_v2:
+    build: ./air-co-voc-no2-c2h5oh-probe
+    depends_on: [api]
+    privileged: true
+    devices:
+      - /dev/i2c-1:/dev/i2c-1
+    environment:
+      - API_BASE=http://api:8000
+    restart: unless-stopped
+  scd4x:
+    build: ./air-co2-temp-hum-probe
+    depends_on: [api]
+    privileged: true
+    devices:
+      - /dev/i2c-1:/dev/i2c-1
+    environment:
+      - API_BASE=http://api:8000
+    restart: unless-stopped
+volumes:
+  grafana-storage:
