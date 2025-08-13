@@ -9,6 +9,11 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     restart: unless-stopped
   api:
     build:
@@ -18,6 +23,13 @@ services:
       - "8000:8000"
     tmpfs:
       - /app/data
+    environment:
+      - RETENTION_SECONDS=86400
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     restart: unless-stopped
   sds011:
     build: ./air-quality-probe
@@ -27,6 +39,11 @@ services:
       - /dev/ttyUSB0:/dev/ttyUSB0
     environment:
       - API_BASE=http://api:8000
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     restart: unless-stopped
   bme680:
     build: ./air-voc-probe
@@ -36,6 +53,11 @@ services:
       - /dev/i2c-1:/dev/i2c-1
     environment:
       - API_BASE=http://api:8000
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     restart: unless-stopped
   mgs_v2:
     build: ./air-co-voc-no2-c2h5oh-probe
@@ -45,6 +67,11 @@ services:
       - /dev/i2c-1:/dev/i2c-1
     environment:
       - API_BASE=http://api:8000
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     restart: unless-stopped
   scd4x:
     build: ./air-co2-temp-hum-probe
@@ -54,12 +81,24 @@ services:
       - /dev/i2c-1:/dev/i2c-1
     environment:
       - API_BASE=http://api:8000
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     restart: unless-stopped
   weather-api:
     build: ./api-data-probe
     depends_on: [api]
     environment:
       - API_BASE=http://api:8000
+      - WEATHER_INTERVAL_SECONDS=300
+      - WEATHER_API_KEY=ae3fd22b40dd4b6295685733232603
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     restart: unless-stopped
 volumes:
   grafana-storage:

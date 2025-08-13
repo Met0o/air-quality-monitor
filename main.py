@@ -1,15 +1,16 @@
-from fastapi import FastAPI, Request
-from datetime import datetime, timedelta
-from typing import List, Dict
-from collections import deque
+import os
 import threading
+from typing import  Dict
+from fastapi import FastAPI
+from datetime import datetime
+from collections import deque
+
 
 app = FastAPI()
 lock = threading.Lock()
 
 BUFFER: Dict[str, deque] = {}
-
-RETENTION_SECONDS = 24 * 3600
+RETENTION_SECONDS = int(os.environ.get("RETENTION_SECONDS", str(24 * 3600)))
 
 @app.post("/ingest/{measurement}")
 async def ingest(measurement: str, payload: Dict):

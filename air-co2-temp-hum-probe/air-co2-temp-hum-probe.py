@@ -1,13 +1,12 @@
-import os
-import requests
-import time
 import re
-
-from sensirion_i2c_driver import LinuxI2cTransceiver, I2cConnection
+import os
+import time
+import requests
 from sensirion_i2c_scd import Scd4xI2cDevice
+from sensirion_i2c_driver import LinuxI2cTransceiver, I2cConnection
+
 
 API_BASE = os.environ.get("API_BASE", "http://localhost:8000")
-
 
 def extract_numerical_value(obj):
     match = re.search(r"\d+(\.\d+)?", str(obj))

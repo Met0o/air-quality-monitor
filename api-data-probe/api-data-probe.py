@@ -1,12 +1,12 @@
-import requests
-import time
-import json
 import os
+import time
+import requests
 
-API_KEY = 'ae3fd22b40dd4b6295685733232603'
+API_KEY = os.environ.get("WEATHER_API_KEY")
 WEATHER_API_URL = 'http://api.weatherapi.com/v1/current.json'
 INTERNAL_API_BASE = os.environ.get("API_BASE", "http://localhost:8000")
 INTERNAL_API_URL = f"{INTERNAL_API_BASE}/ingest/weather"
+WEATHER_INTERVAL_SECONDS = int(os.environ.get("WEATHER_INTERVAL_SECONDS", "300"))
 
 while True:
     try:
@@ -38,4 +38,4 @@ while True:
     except Exception as e:
         print('Error fetching or sending weather data:', e)
     
-    time.sleep(1)
+    time.sleep(WEATHER_INTERVAL_SECONDS)

@@ -1,9 +1,9 @@
+import os
 import bme680
 import requests
 from time import sleep, strftime
 from iaq import IAQTracker
 
-import os
 API_BASE = os.environ.get("API_BASE", "http://localhost:8000")
 API_URL = f"{API_BASE}/ingest/bme680"
 
@@ -15,7 +15,6 @@ def post_data(air_quality_score, gas, hum, pressure, temp):
         "temp": float(temp),
     }
     
-    # Only add air quality score if it's available (not during calibration)
     if air_quality_score is not None:
         payload["air_quality_score"] = float(air_quality_score)
         print("Sending data with air quality score:", air_quality_score)
