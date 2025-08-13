@@ -1,6 +1,6 @@
-FROM python:3.9
+FROM python:3.12-slim
 
-RUN pip install influxdb requests
+RUN pip install requests
 
 COPY api-data-probe.py /app/api-data-probe.py
 

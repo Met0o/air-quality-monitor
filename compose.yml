@@ -55,5 +55,11 @@ services:
     environment:
       - API_BASE=http://api:8000
     restart: unless-stopped
+  weather-api:
+    build: ./api-data-probe
+    depends_on: [api]
+    environment:
+      - API_BASE=http://api:8000
+    restart: unless-stopped
 volumes:
   grafana-storage:

@@ -2,7 +2,7 @@
 # Code taken from here - https://github.com/atsclct/atsc_sensors/blob/main/gas_gmxx_pi.py
 '''
 import time
-import smbus
+import smbus2 as smbus
 import struct
 
 class GAS_GMXXX:
