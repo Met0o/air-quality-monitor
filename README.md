@@ -1,104 +1,114 @@
-# Raspberry Pi 4 Air Quality Monitor System
+# Raspberry Pi 4 Air Quality Monitor
 
-Simple docker setup for a home-made PM 2.5 & PM 10, VOC, Co2, CO, NO2, C2H5CH, Temperature, Pressure, and Humidity air quality monitoring system. 
+Dockerized home air‑quality stack for PM2.5/PM10 (SDS011), VOC/Temp/Pressure/Humidity (BME680), CO₂/Temp/Humidity (SCD41), and multi‑gas (Grove MGS V2). Time‑series are kept in memory via a sliding window API (no InfluxDB), and visualized in Grafana using the Infinity datasource.
 
-This code is intended to work with Raspberry Pi 4 64bit OS, and the sensors SDS011, BME680, M5Stack CO2L Unit (SCD41) and Grove - Gas Sensor V2(Multichannel).
+This project targets Raspberry Pi 4 (64‑bit OS) with I²C enabled.
 
+## What’s in here
+
+- API (`FastAPI`): in‑memory sliding window store with retention
+- Probes: read sensors and POST to the API every 10s
+  - `air-quality-probe` (SDS011, serial `/dev/ttyUSB0`)
+  - `air-voc-probe` (BME680, I²C `/dev/i2c-1`)
+  - `air-co2-temp-hum-probe` (SCD41, I²C `/dev/i2c-1`)
+  - `air-co-voc-no2-c2h5oh-probe` (Grove MGS V2, I²C `/dev/i2c-1`)
+  - `api-data-probe` (WeatherAPI reference data)
+- Grafana: dashboards via Infinity datasource
+
+## Project structure
+
+```
+compose.yml
+Dockerfile (API image)
+main.py (API)
+air-quality-probe/
+air-voc-probe/
+air-co2-temp-hum-probe/
+air-co-voc-no2-c2h5oh-probe/
+api-data-probe/
+dashboards/
+img/
+```
+
+## Install Docker on Raspberry Pi OS
+
+- `curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh`
+- Reboot or add user to docker group
+
+## Run
+
+```
 sudo docker compose up -d --build
-
-<pre>
 ```
-project structure:
-│   docker-compose.yml
-|
-└───air-co-voc-no2-c2h5oh-probe
-|   |   Dockerfile
-│   |   air-co-voc-no2-c2h5oh-call.py
-|
-└───air-voc-probe
-|   |   Dockerfile
-│   |   air-voc-probe.py
-|
-└───air-c02-temp-hum-probe
-│   │   Dockerfile
-│   │   air-c02-temp-hum-probe.py
-|
-└───air-quality-probe
-│   │   Dockerfile
-│   │   air-quality-probe.py
-│
-└───api_data
-    │   Dockerfile
-    │   api_data_fetch.py
+
+- Grafana: http://localhost:3000 (user: `admin`, pass: `admin`)
+- API: http://localhost:8000
+
+The compose file installs the Grafana Infinity plugin automatically.
+
+## API
+
+- `POST /ingest/{measurement}`: append a data point
+- `GET  /query/{measurement}`: return current sliding window as JSON
+
+Measurements used by the probes:
+
+- `sds011` (PM2.5/PM10)
+- `bme680` (gas_resistance, humidity, pressure, temp, optional air_quality_score after calibration)
+- `scd4x` (co2_ppm, temperature_c, humidity_rh)
+- `groove_mgs_v2` (NO2, C2H5OH, VOC, CO)
+- `weather` (temperature, humidity, wind, and AQ fields)
+
+Example:
+
+```bash
+curl -s http://localhost:8000/query/bme680 | jq '.[-3:]'
 ```
-</pre>
 
-# Requirements (deployed as part of the Docker containers): 
+Retention is enforced in memory on every ingest. Default is 24h and is configurable via `RETENTION_SECONDS`.
 
-  - Python 3.9 
-    - pip packages: 
-      - influxdb 
-      - pyserial
-      - tenacity
-      - requests
-      - smbus2
-      - bme680
-      - sensirion-i2c-sen5x
-      - sensirion-i2c-scd
+## Configuration (env)
 
-To install Docker on Raspberry Pi OS:
-    - https://phoenixnap.com/kb/docker-on-raspberry-pi
-    - curl -fsSL https://get.docker.com -o get-docker.sh
-    - sudo sh get-docker.sh
-    
-    - sudo curl -L "https://github.com/docker/compose/releases/download/v2.1.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    - sudo apt update
-    - sudo apt install code
+Set in `compose.yml`:
 
-One specific to this implementation is the version of InfluxDB which for my setup is 1.8. Newer versions of influxdb enter in a reboot loop which I was unable to fix.  I've tried with containers from different architectures such as arm64v8 & arm32v7 and none of them worked.
+- API
+  - `RETENTION_SECONDS` (default `86400`)
+- Probes
+  - `API_BASE` (default inside containers `http://api:8000`)
+- Weather probe
+  - `WEATHER_API_KEY` (required)
+  - `WEATHER_INTERVAL_SECONDS` (default `300`)
 
-The deployment spins up the following microservices: 
+All services have Docker log rotation enabled (`json-file`, `10m` x `3`) to protect SD card space.
 
-  - InfluxDB
-  - Grafana
-  - Chronograf
-  - Telegraf
-  - Kapacitor
-  - air-co-voc-no2-c2h5oh-probe
-  - air-co2-temp-hum-probe
-  - air-quality-probe
-  - api-data-probe
-  - air-voc-probe
+## Notes on sensors
 
-air-co-voc-no2-c2h5oh-call.py uses the Grove Gas Sensor V2(Multichannel) by Seed Studio (https://wiki.seeedstudio.com/Grove-Multichannel-Gas-Sensor-V2/) and can detect carbon monoxide (CO), Nitrogen dioxide (NO2), Ethyl alcohol(C2H5CH), and Volatile Organic Compounds (VOC). This is the most difficult and problematic sensor to configure for meaningful results. The code I use is adapted from the code of Chuntao Liu (https://github.com/atsclct/atsc_sensors).
+- BME680 air quality score: the IAQ value is emitted after a calibration burn‑in. Default burn‑in is ~100 cycles at 10s each (~17 minutes). Before that, only gas/humidity/pressure/temp are posted.
+- Devices required by containers:
+  - `/dev/ttyUSB0` for SDS011
+  - `/dev/i2c-1` for I²C sensors
 
-air-voc-probe.py uses the BME680 Breakout - Air Quality, Temperature, Pressure, Humidity Sensor (https://shop.pimoroni.com/products/bme680-breakout) to append readings into influxDB in 5 second intervals.
+## Grafana
 
-air-co2-temp-hum-probe.py uses the M5Stack (https://shop.m5stack.com/products/co2l-unit-with-temperature-and-humidity-sensor-scd41) sensor to append readings into InfluxDB in 5 second intervals. 
+- Uses the Infinity datasource to query the API directly (no time‑series DB).
+- Dashboards can be imported from `dashboards/`.
 
-air-quality-probe.py appends measurements from the SDS011 sensor into InfluxDB in 5 second intervals.
+## SD‑card considerations
 
-api-data-probe.py sources measurements from http://api.weatherapi.com/ and stores them into the InfluxDB container each 5 minutes. This data is used to compare the indoor with outdoor readings.
+- API stores data in memory only; `tmpfs` is used for ephemeral paths.
+- Grafana persists minimal metadata in `grafana-storage` (SQLite DB, dashboards, plugins). This is small and bounded relative to usage; not a time‑series store.
+- Docker logs are rotated/capped.
 
-Setting Grafana with the correct data sources requires the addition of five separate InfluxDB instances. Each of these instances must point to the same InfluxDB container using the URL http://influxdb:8086. Username or password are not required, but each data source has a unique database name corresponding to its respective sensor:
+## Troubleshooting
 
-  - api_data
-  - bme680_data
-  - scd4x_data
-  - sds011_data
-  - groove_mgs_v2_data
+- No IAQ score on BME680 panels right after startup: wait for calibration to finish, or check `bme680` container logs.
+- Check API quickly: `curl -s http://localhost:8000/`.
 
-dashboards folder contains the latest export of the JSON model of the Grafana dashboard.
+## Hardware and libraries
 
-./conf folder contains the configuration plugins for telegraf and kapacitor (required only for the dashboards with system metrics). 
+- SDS011, BME680, SCD41, Grove MGS V2
+- Python libs are installed inside each container during build (no host Python setup needed).
 
-Setting up Chronograf dashboard requires some basic configuration from its GUI accessible at http://localhost:8888
+## Screenshot
 
-# Latest Grafana dashboard
-![Image description](./img/Grafana2023-07-13.png)
-
-# Chronograf dashboard of the system utilization
-![Image description](./img/chronograf.png)
-
-# Chronograf dashboard with InfluxDB metrics
-![Image description](./img/influxdb.png)
+![Grafana](./img/Grafana2023-07-13.png)
