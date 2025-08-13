@@ -1,5 +1,6 @@
 bme680
 fastapi
+numpy
 requests
 smbus2
 uvicorn
