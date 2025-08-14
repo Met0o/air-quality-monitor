@@ -1,14 +1,17 @@
 services:
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:12.2.0
     ports:
       - "3000:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
+      - /home/meto/dev/air-quality-monitor/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - /home/meto/dev/air-quality-monitor/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - /home/meto/dev/air-quality-monitor/dashboards:/var/lib/grafana/dashboards
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource
+      - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource@3.4.1
     logging:
       driver: json-file
       options:
